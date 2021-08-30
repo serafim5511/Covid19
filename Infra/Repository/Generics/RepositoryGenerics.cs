@@ -39,20 +39,9 @@ namespace Infra.Repository.Generics
 
         public async Task<T> GetEntityById(int Id)
         {
-            try
+            using (var data = new ContextBase(_OptionsBuilder))
             {
-                using (var data = new ContextBase(_OptionsBuilder))
-            {
-                
-                    return await data.Set<T>().FindAsync(Id);
-
-                }
-               
-            }
-            catch (Exception ex)
-            {
-
-                throw;
+                return await data.Set<T>().FindAsync(Id);
             }
         }
 

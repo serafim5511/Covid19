@@ -27,28 +27,30 @@ namespace ApiCovid19.Controllers
         }
 
         [HttpGet("/api/Get")]
-        public async Task<Object> Get()
+        public async Task<Object> Get()      
         {
             try
             {
-                /*var client = new RestClient("https://covid-api.mmediagroup.fr/");
-                var request = new RestRequest("v1/cases", Method.GET);
-                var queryResult = client.Execute(request);
-                var result = JsonConvert.DeserializeObject<Object>(queryResult.Content);
-                var cache = new Cache()
+                var recente = await _ICache.Recente();
+                if (String.IsNullOrEmpty(recente?.JsonResult))
                 {
-                    JsonResult = result.ToString(),
-                    Date = DateTime.Now
-                };
-                await _ICache.Add(cache);*/
-                var result =await _ICache.GetEntityById(1);
-                return result.JsonResult;
-
+                    var client = new RestClient("https://covid-api.mmediagroup.fr/");
+                    var request = new RestRequest("v1/cases", Method.GET);
+                    var queryResult = client.Execute(request);
+                    var result = JsonConvert.DeserializeObject<Object>(queryResult.Content);
+                    var cache = new Cache()
+                    {
+                        JsonResult = result.ToString(),
+                        Date = DateTime.Now
+                    };
+                    await _ICache.Add(cache);
+                    return result;
+                }
+                return recente.JsonResult;
             }
             catch (Exception ex)
             {
-
-                throw;
+                return 500;
             }
         }
 

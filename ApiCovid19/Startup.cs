@@ -30,15 +30,7 @@ namespace ApiCovid19
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration["ConnectionStrings:DefaultConnection"];
-           /*services.AddCors(options => 
-           {
-               options.AddPolicy(name:"Cors",builder =>
-               {
-                   builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "http://localhost:5000/api/Get")
-                   .AllowAnyHeader().AllowAnyMethod();
-               });
-           });*/
-
+     
             services.AddDbContext<ContextBase>(options => options.UseSqlServer(connection));
 
             services.AddControllersWithViews();
@@ -89,8 +81,6 @@ namespace ApiCovid19
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            /*app.UseCors("Cors");*/
-
 
             app.UseAuthentication();
             app.UseAuthorization();
