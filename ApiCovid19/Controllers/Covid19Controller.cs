@@ -53,20 +53,5 @@ namespace ApiCovid19.Controllers
                 return 500;
             }
         }
-
-        [HttpGet("/api/ListaCache")]
-        public async Task<JsonResult> ListaCache()
-        {
-            return Json(await _ICache.List());
-        }
-
-
-        [HttpPost("/api/AdicionarCache")]
-        public async Task AdicionarCache([FromBody] Cache Cache)
-        {
-            await Task.FromResult(_ICache.Add(Cache));
-        }
-
-
     }
 }

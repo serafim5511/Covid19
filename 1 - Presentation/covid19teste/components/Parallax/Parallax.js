@@ -54,12 +54,12 @@ export default function Parallax(props) {
     <div
       className={parallaxClasses}
       style={{
-        ...style,
-        backgroundImage: "url(" + image + ")",
         transform: transform,
       }}
     >
-      {children}
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      fsdfsdfs
+      <br/><br/><br/><br/><br/><br/>dsad<br/><br/>
     </div>
   );
 }

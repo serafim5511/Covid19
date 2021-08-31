@@ -54,9 +54,9 @@ const classes = useStyles();
         </div>
       </Parallax>
 
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <SectionBasics />
-       
+      <div className={classNames(classes.main, classes.mainRaised)}><br/><br/>
+        a]ddasd
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </div>
       <Footer />
     </div>
