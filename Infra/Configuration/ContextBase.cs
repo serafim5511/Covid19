@@ -16,6 +16,7 @@ namespace Infra.Configuration
         {
             if (!optionsBuilder.IsConfigured)
             {
+                //local
                 optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=Covid19;Integrated Security=False;Encrypt=False;TrustServerCertificate=False");
                 base.OnConfiguring(optionsBuilder);
             }
