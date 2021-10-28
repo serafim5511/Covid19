@@ -17,8 +17,7 @@ namespace Infra.Configuration
             if (!optionsBuilder.IsConfigured)
             {
                 //local
-                //optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=Covid19;Integrated Security=False;Encrypt=False;TrustServerCertificate=False");
-                optionsBuilder.UseSqlServer(@"Server=tcp:covid19projeto.database.windows.net,1433;Initial Catalog=Covid;Persist Security Info=False;User ID=covid19;Password=123456qW@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=Covid19;Integrated Security=False;Encrypt=False;TrustServerCertificate=False");
                 base.OnConfiguring(optionsBuilder);
             }
         }
