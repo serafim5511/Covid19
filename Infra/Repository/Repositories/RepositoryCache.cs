@@ -25,9 +25,13 @@ namespace Infra.Repository.Repositories
             {
                 var dataAtual = DateTime.Now;
                 var result = await data.Cache.OrderByDescending(a => a.Date).FirstOrDefaultAsync();
-                
-                return result.Date.Subtract(dataAtual).Hours > 3 ?null : result;
-            }            
+
+                if (result == null)
+                    return null;
+                else
+                    return dataAtual.Subtract(result.Date).Hours > 3 ? new Cache {JsonResult="false" } : result;
+
+            }
         }
     }
 }

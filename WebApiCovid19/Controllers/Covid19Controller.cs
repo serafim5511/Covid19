@@ -1,22 +1,15 @@
 ﻿using Domain.Interfaces.InterfaceUsuario;
 using Entities;
-using Infra.Configuration;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiCovid19.Controllers
+namespace WebApiCovid19.Controllers
 {
-    //[Authorize]
-/*    [EnableCors("Cors")]
-*/
     public class Covid19Controller : Controller
     {
         private readonly ICache _ICache;
@@ -27,7 +20,7 @@ namespace ApiCovid19.Controllers
         }
 
         [HttpGet("/api/Get")]
-        public async Task<Object> Get()      
+        public async Task<Object> Get()
         {
             try
             {
@@ -47,7 +40,7 @@ namespace ApiCovid19.Controllers
                     await _ICache.Add(cache);
                     return result;
                 }
-               
+
                 return recente.JsonResult;
             }
             catch (Exception ex)
